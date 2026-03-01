@@ -1,59 +1,144 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎬 Cinema Booking & Ticketing System (CBTS)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel 12](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
 
-## About Laravel
+[![Livewire 3](https://img.shields.io/badge/Livewire-3.x-FB70A9?style=for-the-badge&logo=livewire)](https://livewire.laravel.com)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[![Architecture](https://img.shields.io/badge/Architecture-DDD_%2F_Clean-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Domain-driven_design)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> **Enterprise-grade cinema management system** diseñado bajo principios de **Domain-Driven Design (DDD)**, **Clean Architecture** y **SOLID**.
 
-## Learning Laravel
+  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Este proyecto no es solo un sistema de reservas; es una demostración de ingeniería de software avanzada aplicada a un dominio con reglas de negocio complejas y desafíos de concurrencia en tiempo real.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  
 
-## Laravel Sponsors
+---
+  
+## 🧠 El Desafío del Dominio
+  
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Gestionar un cine de **9 salas** (3D, Premium, General) con **5-6 funciones diarias** por sala implica resolver:
 
-### Premium Partners
+*  **Precios Dinámicos:** Variación por tipo de sala, día de la semana y políticas de descuento.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+*  **Alta Concurrencia:** Evitar la "doble reserva" de asientos mediante bloqueos atómicos.
 
-## Contributing
+*  **Ciclo de Vida Complejo:** Reservas que nacen como `Pending`, transicionan a `Confirmed` o expiran automáticamente.
+  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🏗️ Arquitectura y Filosofía
 
-## Code of Conduct
+A diferencia del MVC tradicional de Laravel (donde la lógica suele "ensuciar" modelos y controladores), este proyecto desacopla el **Corazón del Negocio** del Framework.
+  
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Estrategia de Capas:
 
-## Security Vulnerabilities
+1.  **Domain:** Lógica pura. Agregados, Entidades y Value Objects. Cero dependencias externas.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2.  **Application:** Orquestación de casos de uso (Commands/Queries/Handlers).
 
-## License
+3.  **Infrastructure:** Implementaciones concretas (Eloquent, Redis, Mailers, Mappers).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+4.  **Presentation (Livewire 3):** UI reactiva y moderna sin la complejidad de un SPA pesado.
+
+---
+
+## 🗺️ Bounded Contexts (Contextos Delimitados)
+
+El sistema se divide en sub-dominios para garantizar un bajo acoplamiento:
+| Contexto  | Responsabilidad  |
+|--|--|
+| **Catalog** | Gestión de películas, salas y asientos (Master Data). |
+|**Scheduling**| Programación de funciones y asignación de horarios.|
+| **Booking** | 🚀 **El Corazón:** Reservas, tickets y gestión de estados. |
+| **Shared** |  Elementos transversales (Money VO, Enums, Identificadores). |
+---
+
+## 🛠️ Patrones de Diseño Implementados
+
+Este repositorio destaca por el uso justificado de patrones de diseño:
+
+*  **Aggregate Root:**  `Booking` actúa como puerta de entrada para garantizar la consistencia de los `Tickets`.
+
+*  **State Pattern:** Gestión elegante de estados (`Pending` -> `Confirmed`) sin `if/else` interminables.
+
+*  **Strategy Pattern:** Cálculo de precios (`StandardPrice`, `PremiumPrice`, `WeekendPrice`) escalable y SOLID.
+
+*  **Repository Pattern:** Interfaces de dominio implementadas en infraestructura mediante **Eloquent**.
+
+*  **Domain Events:** Desacoplamiento de efectos secundarios (ej: enviar QR tras confirmar pago).
+
+*  **Data Mapper:** Transformación bidireccional entre Modelos Eloquent y Entidades de Dominio.
+
+---
+
+## ⚙️ Stack Tecnológico & Infraestructura
+
+
+*  **PHP 8.2+** & **Laravel 12+**
+
+*  **Livewire 3:** Reactividad del lado del servidor.
+
+*  **SQLite/MySQL:** Persistencia de datos.
+
+*  **Pest / PHPUnit:** Suite de pruebas para asegurar reglas de arquitectura y dominio.
+
+---
+
+## 🚀 Instalación y Setup
+
+1.  **Clonar el repositorio:**
+
+```bash
+git clone [https://github.com/Alexis79Bck/livewire3-crud-cinema-project.git](https://github.com/Alexis79Bck/livewire3-crud-cinema-project.git)
+cd livewire3-crud-cinema-project
+```
+
+2.  **Instalar dependencias:**
+
+```bash
+
+composer install
+
+npm install && npm  run  build
+```
+
+3.  **Configurar entorno:**
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4.  **Migraciones y Seeds (Crea las 9 salas automáticamente):**
+
+```bash
+php artisan migrate --seed
+```
+5.  **Ejecutar el Servidor:**
+
+```bash
+php artisan serve
+```
+
+---
+
+## 🧪 Pruebas Automatizadas
+
+El proyecto sigue una pirámide de pruebas estricta:
+
+- Unit Tests: Validación de reglas de dominio y Value Objects (sin DB).
+
+- Integration Tests: Verificación de Repositorios y Mappers.
+
+- Feature Tests: Flujo completo desde el componente Livewire hasta la DB.
+
+  
+
+## 👨‍💻 Sobre el Autor
+
+Este proyecto fue desarrollado bajo una visión Senior Fullstack, priorizando el código que expresa el negocio sobre el código que simplemente "funciona". El objetivo es demostrar que Laravel es una herramienta excepcionalmente potente para aplicaciones empresariales cuando se combina con patrones de diseño robustos.
