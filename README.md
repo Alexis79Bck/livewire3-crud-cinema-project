@@ -1,7 +1,6 @@
 # 🎬 Cinema Booking & Ticketing System (CBTS)
 
-[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2-blue?style=flat-square&logo=php)]
-(https://www.php.net)
+[![PHP 8.2+](https://img.shields.io/badge/PHP-8.2-blue?style=flat-square&logo=php)](https://www.php.net)
 
 [![Laravel 12](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com)
 
