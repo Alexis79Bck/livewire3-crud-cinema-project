@@ -1,10 +1,9 @@
 # 🎬 Cinema Booking & Ticketing System (CBTS)
-
 [![PHP 8.2+](https://img.shields.io/badge/PHP-8.2-blue?style=for-the-badge&logo=php)](https://www.php.net) [![Laravel 12](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com) [![Livewire 3](https://img.shields.io/badge/Livewire-3.x-FB70A9?style=for-the-badge&logo=livewire)](https://livewire.laravel.com) [![Architecture](https://img.shields.io/badge/Architecture-DDD_%2F_Clean-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/Domain-driven_design)
 
   
 
-> Sistema de reserva y venta de boletos para un cine con 9 salas, desarrollado con **Laravel 12**, **Livewire 3** y una arquitectura basada en **Domain‑Driven Design (DDD)**, **Clean Architecture** y principios **SOLID**. Este proyecto sirve como ejemplo profesional de cómo aplicar patrones de diseño y buenas prácticas en un entorno Laravel. Es una demostración de ingeniería de software avanzada aplicada a un dominio con reglas de negocio complejas y desafíos de concurrencia en tiempo real.
+Sistema de reserva y venta de boletos para un cine con 9 salas, desarrollado con **Laravel 12**, **Livewire 3** y una arquitectura basada en **Domain‑Driven Design (DDD)**, **Clean Architecture** y principios **SOLID**. Este proyecto sirve como ejemplo profesional de cómo aplicar patrones de diseño y buenas prácticas en un entorno Laravel. Es una demostración de ingeniería de software avanzada aplicada a un dominio con reglas de negocio complejas y desafíos de concurrencia en tiempo real.
 
   
 
@@ -244,4 +243,4 @@ Este proyecto es de código abierto y se distribuye bajo la licencia MIT. Consul
 
 ## 👨‍💻 Sobre el Autor
 
-Este proyecto fue desarrollado por Alexis E. Mata, bajo una visión Senior Fullstack, priorizando el código que expresa el negocio sobre el código que simplemente "funciona". El objetivo es demostrar que Laravel es una herramienta excepcionalmente potente para aplicaciones empresariales cuando se combina con patrones de diseño robustos.
+Este proyecto fue desarrollado por ***Alexis E. Mata***, bajo una visión Senior Fullstack, priorizando el código que expresa el negocio sobre el código que simplemente "funciona". El objetivo es demostrar que Laravel es una herramienta excepcionalmente potente para aplicaciones empresariales cuando se combina con patrones de diseño robustos.
