@@ -2,7 +2,7 @@
 
 namespace App\Domain\Cinema\Entities;
 
-class User
+class Customer
 {
 
 }
