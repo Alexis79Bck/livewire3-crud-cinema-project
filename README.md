@@ -4,7 +4,7 @@
 
   
 
-> Sistema de reserva y venta de boletos para un cine con 9 salas, desarrollado con **Laravel 12**, **Livewire 3** y una arquitectura basada en **Domain‑Driven Design (DDD)**, **Clean Architecture** y principios **SOLID**. Este proyecto sirve como ejemplo profesional de cómo aplicar patrones de diseño y buenas prácticas en un entorno Laravel.
+> Sistema de reserva y venta de boletos para un cine con 9 salas, desarrollado con **Laravel 12**, **Livewire 3** y una arquitectura basada en **Domain‑Driven Design (DDD)**, **Clean Architecture** y principios **SOLID**. Este proyecto sirve como ejemplo profesional de cómo aplicar patrones de diseño y buenas prácticas en un entorno Laravel. Es una demostración de ingeniería de software avanzada aplicada a un dominio con reglas de negocio complejas y desafíos de concurrencia en tiempo real.
 
   
 
@@ -20,51 +20,6 @@ Gestionar un cine de **9 salas** (3D, Premium, General) con **5-6 funciones diar
 *  **Alta Concurrencia:** Evitar la "doble reserva" de asientos mediante bloqueos atómicos.
 
 *  **Ciclo de Vida Complejo:** Reservas que nacen como `Pending`, transicionan a `Confirmed` o expiran automáticamente.
-  
-
-## 🏗️ Arquitectura y Filosofía
-
-A diferencia del MVC tradicional de Laravel (donde la lógica suele "ensuciar" modelos y controladores), este proyecto desacopla el **Corazón del Negocio** del Framework.
-  
-
-### Estrategia de Capas:
-
-1.  **Domain:** Lógica pura. Agregados, Entidades y Value Objects. Cero dependencias externas.
-
-2.  **Application:** Orquestación de casos de uso (Commands/Queries/Handlers).
-
-3.  **Infrastructure:** Implementaciones concretas (Eloquent, Redis, Mailers, Mappers).
-
-4.  **Presentation (Livewire 3):** UI reactiva y moderna sin la complejidad de un SPA pesado.
-
----
-
-## 🗺️ Bounded Contexts (Contextos Delimitados)
-
-El sistema se divide en sub-dominios para garantizar un bajo acoplamiento:
-| Contexto  | Responsabilidad  |
-|--|--|
-| **Catalog** | Gestión de películas, salas y asientos (Master Data). |
-|**Scheduling**| Programación de funciones y asignación de horarios.|
-| **Booking** | 🚀 **El Corazón:** Reservas, tickets y gestión de estados. |
-| **Shared** |  Elementos transversales (Money VO, Enums, Identificadores). |
----
-
-## 🛠️ Patrones de Diseño Implementados
-
-Este repositorio destaca por el uso justificado de patrones de diseño:
-
-*  **Aggregate Root:**  `Booking` actúa como puerta de entrada para garantizar la consistencia de los `Tickets`.
-
-*  **State Pattern:** Gestión elegante de estados (`Pending` -> `Confirmed`) sin `if/else` interminables.
-
-*  **Strategy Pattern:** Cálculo de precios (`StandardPrice`, `PremiumPrice`, `WeekendPrice`) escalable y SOLID.
-
-*  **Repository Pattern:** Interfaces de dominio implementadas en infraestructura mediante **Eloquent**.
-
-*  **Domain Events:** Desacoplamiento de efectos secundarios (ej: enviar QR tras confirmar pago).
-
-*  **Data Mapper:** Transformación bidireccional entre Modelos Eloquent y Entidades de Dominio.
 
 ---
 
@@ -77,7 +32,11 @@ Este repositorio destaca por el uso justificado de patrones de diseño:
 
 *  **SQLite/MySQL:** Persistencia de datos.
 
+*  **Cache/Concurrencia**: Redis (para bloqueo de asientos)
+
 *  **Pest / PHPUnit:** Suite de pruebas para asegurar reglas de arquitectura y dominio.
+
+*  **Otros**: Laravel Events, Queues, etc.
 
 ---
 
@@ -119,6 +78,149 @@ php artisan serve
 
 ---
 
+
+## ✨ Características principales
+
+- Gestión de **películas**, **salas** y **asientos** (contexto Catalog).
+- Programación de **funciones** (shows) con horarios (contexto Scheduling).
+- **Reserva de asientos** con control de concurrencia y estados (pending, confirmed, cancelled, expired).
+- **Cálculo dinámico de precios** según tipo de sala, día y promociones (patrón Strategy).
+- **Bloqueo temporal de asientos** con Redis mientras el usuario completa la compra.
+- **Eventos de dominio** para desacoplar contextos (ej. `BookingConfirmed` → email + actualización de disponibilidad).
+- Panel administrativo y área de clientes con componentes **Livewire 3** interactivos.
+- Arquitectura preparada para escalar y mantener.
+
+---
+
+## 🏗️ Arquitectura y Filosofía
+
+A diferencia del MVC tradicional de Laravel (donde la lógica suele "ensuciar" modelos y controladores), este proyecto desacopla el **Corazón del Negocio** del Framework.
+
+El proyecto está organizado en **contextos delimitados** y **capas**, siguiendo los principios de Domain‑Driven Design y Clean Architecture. Las dependencias siempre apuntan hacia el dominio.
+  
+
+### Estrategia de Capas:
+
+1.  **Domain:** Lógica pura. Agregados, Entidades y Value Objects. Cero dependencias externas.
+
+2.  **Application:** Orquestación de casos de uso (Commands/Queries/Handlers).
+
+3.  **Infrastructure:** Implementaciones concretas (Eloquent, Redis, Mailers, Mappers).
+
+4.  **Presentation (Livewire 3):** UI reactiva y moderna sin la complejidad de un SPA pesado.
+
+---
+
+### Contextos delimitados (Bounded Contexts)
+
+| Contexto       | Responsabilidad                                                                 |
+|----------------|---------------------------------------------------------------------------------|
+| **Catalog**    | Películas, salas y asientos (datos maestros).                                   |
+| **Scheduling** | Funciones (shows): asignación de película, sala y horario.                      |
+| **Booking**    | Corazón del negocio: reservas, tickets, estados, precios y políticas.           |
+| **Shared**     | Elementos comunes (Value Objects, Enums) compartidos por los demás contextos.  
+
+
+### 🛠️ Patrones de Diseño Implementados
+
+Este repositorio destaca por el uso justificado de patrones de diseño:
+
+*  **Aggregate Root:**  `Booking` actúa como puerta de entrada para garantizar la consistencia de los `Tickets`.
+
+*  **State Pattern:** Gestión elegante de estados (`Pending` -> `Confirmed`) sin `if/else` interminables.
+
+*  **Strategy Pattern:** Cálculo de precios (`StandardPrice`, `PremiumPrice`, `WeekendPrice`) escalable y SOLID.
+
+*  **Repository Pattern:** Interfaces de dominio implementadas en infraestructura mediante **Eloquent**.
+
+*  **Domain Events:** Desacoplamiento de efectos secundarios (ej: enviar QR tras confirmar pago).
+
+*  **Data Mapper:** Transformación bidireccional entre Modelos Eloquent y Entidades de Dominio.
+
+---
+
+## 📁 Estructura de carpetas
+
+
+    app/
+    ├── Domain/
+    │   ├── Catalog/
+    │   │   ├── Entities/
+    │   │   │   ├── Movie.php
+    │   │   │   ├── Auditorium.php
+    │   │   │   └── Seat.php
+    │   │   ├── Repositories/
+    │   │   │   ├── MovieRepository.php
+    │   │   │   └── AuditoriumRepository.php
+    │   │   └── Events/
+    │   │
+    │   ├── Scheduling/
+    │   │   ├── Aggregates/
+    │   │   │   └── Showtime/
+    │   │   │       ├── Showtime.php
+    │   │   │       ├── ShowtimeId.php
+    │   │   │       ├── ShowtimeStatus.php
+    │   │   │       └── SeatAvailability.php
+    │   │   ├── Repositories/
+    │   │   │   └── ShowtimeRepository.php
+    │   │   └── Events/
+    │   │
+    │   ├── Booking/
+    │   │   ├── Aggregates/
+    │   │   │   └── Booking/
+    │   │   │       ├── Booking.php
+    │   │   │       ├── BookingId.php
+    │   │   │       ├── BookingStatus.php
+    │   │   │       └── Ticket.php
+    │   │   ├── Pricing/
+    │   │   │   ├── PriceCalculator.php
+    │   │   │   ├── StandardPrice.php
+    │   │   │   ├── PremiumPrice.php
+    │   │   │   └── WeekendPrice.php
+    │   │   ├── Policies/
+    │   │   │   ├── ReservationPolicy.php
+    │   │   │   └── CancellationPolicy.php
+    │   │   ├── Repositories/
+    │   │   │   └── BookingRepository.php
+    │   │   ├── Events/
+    │   │   └── Exceptions/
+    │   │
+    │   └── Shared/
+    │       ├── ValueObjects/
+    │       │   ├── Money.php
+    │       │   ├── Email.php
+    │       │   └── SeatNumber.php
+    │       └── Enums/
+    │           ├── SeatType.php
+    │           └── PaymentMethod.php
+    │
+    ├── Application/
+    │   ├── Catalog/
+    │   ├── Scheduling/
+    │   └── Booking/
+    │       ├── Commands/
+    │       ├── Queries/
+    │       ├── Handlers/
+    │       ├── DTOs/
+    │       └── Services/
+    │           └── BookingFacade.php
+    │
+    ├── Infrastructure/
+    │   ├── Persistence/
+    │   │   ├── Eloquent/
+    │   │   │   ├── Models/
+    │   │   │   └── Repositories/
+    │   │   └── Mappers/
+    │   ├── Services/
+    │   │   ├── FakePaymentGateway.php
+    │   │   └── RedisSeatLockManager.php
+    │   └── Providers/
+    │
+    ├── Livewire/
+    │
+    └── Support/
+
+
 ## 🧪 Pruebas Automatizadas
 
 El proyecto sigue una pirámide de pruebas estricta:
@@ -129,8 +231,17 @@ El proyecto sigue una pirámide de pruebas estricta:
 
 - Feature Tests: Flujo completo desde el componente Livewire hasta la DB.
 
-  
+---
+
+## 🤝 Contribución
+Este es un proyecto de portafolio y ejemplo didáctico. Si deseas contribuir o reportar errores, por favor abre un issue o envía un pull request. Toda ayuda es bienvenida.
+
+---
+
+## 📄 Licencia
+Este proyecto es de código abierto y se distribuye bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
+
 
 ## 👨‍💻 Sobre el Autor
 
-Este proyecto fue desarrollado bajo una visión Senior Fullstack, priorizando el código que expresa el negocio sobre el código que simplemente "funciona". El objetivo es demostrar que Laravel es una herramienta excepcionalmente potente para aplicaciones empresariales cuando se combina con patrones de diseño robustos.
+Este proyecto fue desarrollado por Alexis E. Mata, bajo una visión Senior Fullstack, priorizando el código que expresa el negocio sobre el código que simplemente "funciona". El objetivo es demostrar que Laravel es una herramienta excepcionalmente potente para aplicaciones empresariales cuando se combina con patrones de diseño robustos.
