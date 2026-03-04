@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Cinema\Services;
+namespace App\Infrastructure\Services;
 
 class FakePaymentGateway
 {

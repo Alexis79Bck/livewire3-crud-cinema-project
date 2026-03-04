@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Catalog\Repositories;
+namespace App\Domain\Theater\Repositories;
 
 class AuditoriumRepository
 {

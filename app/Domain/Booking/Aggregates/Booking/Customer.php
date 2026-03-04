@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Entities;
+namespace App\Domain\Booking\Aggregates\Booking;
 
 class Customer
 {

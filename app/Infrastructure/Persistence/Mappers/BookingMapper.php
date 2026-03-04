@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Cinema\Persistence\Mappers;
+namespace App\Infrastructure\Persistence\Mappers;
 
 class BookingMapper
 {

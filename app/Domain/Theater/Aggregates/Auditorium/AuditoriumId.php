@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Theater\Aggregates;
+namespace App\Domain\Theater\Aggregates\Auditorium;
 
 class AuditoriumId
 {

@@ -1,20 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Cinema\Providers;
+namespace App\Infrastructure\Providers;
 
 class CinemaServiceProvider
 {
 
 }
-/**
- * .php
-* │   │   │   ├── .php
-* │   │   │   ├── .php
-* │   │   │   └── .php
- * 
- * 
- * 
- * 
- * 
- * 
- */

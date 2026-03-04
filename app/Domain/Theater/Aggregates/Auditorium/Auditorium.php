@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Entities;
+namespace App\Domain\Theater\Aggregates\Auditorium;
 
 class Auditorium
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Cinema\Commands;
+namespace App\Aplication\Booking\Commands;
 
 class CreateBookingCommand
 {

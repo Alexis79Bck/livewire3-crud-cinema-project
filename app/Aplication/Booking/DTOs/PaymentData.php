@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Cinema\DTOs;
+namespace App\Aplication\Booking\DTOs;
 
 class PaymentData
 {
