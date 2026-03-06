@@ -2,8 +2,10 @@
 
 namespace App\Domain\Catalog\Aggregates\Movies;
 
+use App\Domain\Catalog\Enums\MovieStatus;
 use App\Domain\Catalog\Exceptions\InvalidMovieStatus;
 use App\Domain\Catalog\ValueObjects\Image;
+use App\Domain\Catalog\ValueObjects\MovieId;
 use App\Domain\Catalog\ValueObjects\Title;
 use App\Domain\Catalog\ValueObjects\Plot;
 use App\Domain\Catalog\ValueObjects\ReleaseDate;

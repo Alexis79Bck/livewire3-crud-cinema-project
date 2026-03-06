@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Catalog\Aggregates\Movies;
+namespace App\Domain\Catalog\ValueObjects;
 
 use App\Domain\Catalog\Exceptions\InvalidMovieId;
 
