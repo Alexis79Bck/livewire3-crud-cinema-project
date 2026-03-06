@@ -2,7 +2,9 @@
 
 namespace App\Domain\Catalog\Aggregates\Movies;
 
-class MovieStatus
+enum MovieStatus: string
 {
-
+    case DRAFT = 'draft';
+    case PUBLISHED = 'published';
+    case ARCHIVED = 'archived';
 }
