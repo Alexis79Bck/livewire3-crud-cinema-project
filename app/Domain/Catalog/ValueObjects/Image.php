@@ -10,7 +10,7 @@ final class Image
 
     public function __construct(string $url)
     {
-        if ($this->filterValidUrl($url)) {
+        if (!$this->filterValidUrl($url)) {
             throw InvalidMovieImage::invalidUrl();
         }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Catalog\Aggregates\Movies;
+namespace App\Domain\Catalog\Aggregates\Movie;
 
 use App\Domain\Catalog\Enums\MovieStatus;
 use App\Domain\Catalog\Exceptions\InvalidMovieStatus;
