@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Catalog\Handlers;
+namespace App\Aplication\Catalog\Movie\Handlers;
 
 use App\Aplication\Catalog\Movie\Commands\CreateMovieCommand;
 use App\Domain\Catalog\Aggregates\Movie\Movie;
