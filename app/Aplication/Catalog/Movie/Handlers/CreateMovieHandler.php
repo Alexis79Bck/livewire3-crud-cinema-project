@@ -13,6 +13,26 @@ use App\Domain\Catalog\ValueObjects\ReleaseDate;
 use App\Domain\Catalog\ValueObjects\Title;
 use App\Domain\Shared\Generator\IdGenerator;
 
+/**
+ * Handler (Manejador) para el comando CreateMovieCommand.
+ *
+ * Este handler procesa el comando de creación de películas, coordinando la
+ * generación del ID, la creación del aggregate Movie y su persistencia.
+ *
+ * El flujo de ejecución es:
+ * 1. Generar un identificador único para la película usando IdGenerator
+ * 2. Crear los Value Objects a partir de los datos del comando
+ * 3. Crear el aggregate Movie usando el factory method create
+ * 4. Persistir la película usando el MovieRepository
+ *
+ * Este handler implementa el patrón Mediator/Handler de CQRS, aislando
+ * la lógica de aplicación de las reglas de dominio.
+ *
+ * @see CreateMovieCommand Comando que trigger esta acción
+ * @see MovieRepository Interfaz para persistir la película
+ * @see IdGenerator Interfaz para generar identificadores únicos
+ * @see Movie Aggregate Root de la película
+ */
 class CreateMovieHandler
 {
     public function __construct(
