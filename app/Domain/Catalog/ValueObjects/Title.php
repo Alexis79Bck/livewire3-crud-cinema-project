@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * Value Object que representa el título de una película.
+ *
+ * Encapsula el título de una película, asegurando que:
+ * - No esté vacío
+ * - No exceda los 255 caracteres
+ *
+ * Esta clase es inmutable: una vez creada, su valor no puede cambiar.
+ *
+ * @see InvalidMovieTitle Excepción lanzada cuando el título es inválido
+ */
+
 namespace App\Domain\Catalog\ValueObjects;
 
 use App\Domain\Catalog\Exceptions\InvalidMovieTitle;

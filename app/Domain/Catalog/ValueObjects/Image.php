@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Value Object que representa la imagen (póster) de una película.
+ *
+ * Encapsula la URL de la imagen de una película, asegurando que sea una URL válida
+ * y que apunte a un archivo de imagen permitido (jpg, jpeg, png, webp).
+ *
+ * Esta clase es inmutable: una vez creada, su valor no puede cambiar.
+ *
+ * @see InvalidMovieImage Excepción lanzada cuando la URL es inválida
+ */
+
 namespace App\Domain\Catalog\ValueObjects;
 
 use App\Domain\Catalog\Exceptions\InvalidMovieImage;
-
 final class Image
 {
 
