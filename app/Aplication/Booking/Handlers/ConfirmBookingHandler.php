@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Cinema\Handlers;
+namespace App\Aplication\Booking\Handlers;
 
 class ConfirmBookingHandler
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Cinema\Queries;
+namespace App\Aplication\Booking\Queries;
 
 class GetAvailableShowtimesQuery
 {

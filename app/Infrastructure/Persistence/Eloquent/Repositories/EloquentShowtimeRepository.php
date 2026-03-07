@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Cinema\Persistence\Eloquent\Repositories;
+namespace App\Infrastructure\Persistence\Eloquent\Repositories;
 
 class EloquentShowtimeRepository
 {

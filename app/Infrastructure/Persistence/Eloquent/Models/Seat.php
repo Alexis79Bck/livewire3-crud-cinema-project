@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Cinema\Persistence\Eloquent\Models;
+namespace App\Infrastructure\Persistence\Eloquent\Models;
 
 class Seat
 {

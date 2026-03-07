@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Cinema\Services;
+namespace App\Aplication\Booking\Services;
 
 class PricingService
 {

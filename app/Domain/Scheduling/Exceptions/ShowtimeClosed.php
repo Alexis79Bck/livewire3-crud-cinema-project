@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Exceptions;
+namespace App\Domain\Scheduling\Exceptions;
 
 class ShowtimeClosed
 {

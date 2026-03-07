@@ -2,7 +2,19 @@
 
 namespace App\Domain\Catalog\Repositories;
 
-class MovieRepository
-{
+use App\Domain\Catalog\Aggregates\Movie\Movie;
+use App\Domain\Catalog\ValueObjects\MovieId;
 
+interface MovieRepository
+{
+    public function save(Movie $movie): void;
+
+    public function findById(MovieId $id): ?Movie;
+
+    public function delete(Movie $movie): void;
+
+    /** @return Movie[] */
+    public function listByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): array;
+
+    
 }

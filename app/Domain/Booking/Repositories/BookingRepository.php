@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Aggregates\Booking;
+namespace App\Domain\Booking\Repositories;
 
 class BookingRepository
 {
