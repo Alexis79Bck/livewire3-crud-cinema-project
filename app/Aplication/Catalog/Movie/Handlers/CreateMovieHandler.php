@@ -3,7 +3,7 @@
 namespace App\Aplication\Catalog\Handlers;
 
 use App\Aplication\Catalog\Movie\Commands\CreateMovieCommand;
-use App\Domain\Catalog\Aggregates\Movies\Movie;
+use App\Domain\Catalog\Aggregates\Movie\Movie;
 use App\Domain\Catalog\Repositories\MovieRepository;
 use App\Domain\Catalog\ValueObjects\MovieId;
 use App\Domain\Catalog\ValueObjects\Image;

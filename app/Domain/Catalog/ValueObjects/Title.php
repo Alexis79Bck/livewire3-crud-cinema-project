@@ -6,10 +6,9 @@ use App\Domain\Catalog\Exceptions\InvalidMovieTitle;
 
 final class Title
 {
-    private string $value;
     private const MAX_LENGTH = 255;
 
-    public function __construct(string $value)
+    public function __construct(private string $value)
     {
         $value = trim($value);
 

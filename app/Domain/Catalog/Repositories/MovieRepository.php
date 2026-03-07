@@ -12,4 +12,9 @@ interface MovieRepository
     public function findById(MovieId $id): ?Movie;
 
     public function delete(Movie $movie): void;
+
+    /** @return Movie[] */
+    public function listByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): array;
+
+    
 }

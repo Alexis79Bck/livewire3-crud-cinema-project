@@ -6,9 +6,8 @@ use App\Domain\Catalog\Exceptions\InvalidMovieImage;
 
 final class Image
 {
-    private string $url;
 
-    public function __construct(string $url)
+    public function __construct(private string $url)
     {
         if (!$this->filterValidUrl($url)) {
             throw InvalidMovieImage::invalidUrl();

@@ -6,9 +6,8 @@ use DateTimeImmutable;
 
 class ReleaseDate
 {
-    private DateTimeImmutable $value;
 
-    public function __construct(DateTimeImmutable $value)
+    public function __construct(private DateTimeImmutable $value)
     {
         $this->value = $value;
     }

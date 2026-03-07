@@ -13,28 +13,14 @@ use App\Domain\Catalog\ValueObjects\Rating;
 
 final class Movie
 {
-    private MovieId $id;
-
-    private Title $title;
-
-    private Plot $plot;
-
-    private ReleaseDate $releaseDate;
-
-    private Rating $rating;
-
-    private Image $image;
-
-    private MovieStatus $status;
-
     private function __construct(
-        MovieId $id,
-        Title $title,
-        Plot $plot,
-        ReleaseDate $releaseDate,
-        Rating $rating,
-        Image $image,
-        MovieStatus $status
+        private MovieId $id,
+        private Title $title,
+        private Plot $plot,
+        private ReleaseDate $releaseDate,
+        private Rating $rating,
+        private Image $image,
+        private MovieStatus $status
     ) {
         $this->id = $id;
         $this->title = $title;
@@ -81,5 +67,25 @@ final class Movie
     public function id(): MovieId
     {
         return $this->id;
+    }
+
+    public static function reconstitute(
+        MovieId $id,
+        Title $title,
+        Plot $plot,
+        ReleaseDate $releaseDate,
+        Rating $rating,
+        Image $image,
+        MovieStatus $status
+    ): self {
+        return new self(
+            $id,
+            $title,
+            $plot,
+            $releaseDate,
+            $rating,
+            $image,
+            $status
+        );
     }
 }

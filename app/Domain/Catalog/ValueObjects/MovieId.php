@@ -7,9 +7,8 @@ use App\Domain\Catalog\Exceptions\InvalidMovieId;
 
 final class MovieId
 {
-    private string $value;
 
-    public function __construct(?string $value = null)
+    public function __construct(private ?string $value = null)
     {
         if ($this->isEmpty($value)) {
             throw InvalidMovieId::empty();

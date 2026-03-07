@@ -14,9 +14,7 @@ final class Rating
         'NC-17'
     ];
 
-    private string $value;
-
-    public function __construct(string $value)
+    public function __construct(private string $value)
     {
         $value = strtoupper(trim($value));
 

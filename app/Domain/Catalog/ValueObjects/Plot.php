@@ -6,10 +6,9 @@ use App\Domain\Catalog\Exceptions\InvalidMoviePlot;
 
 final class Plot
 {
-    private string $value;
     private const MAX_LENGTH = 500;
 
-    public function __construct(string $value)
+    public function __construct(private string $value)
     {
         $value = trim($value);
 
