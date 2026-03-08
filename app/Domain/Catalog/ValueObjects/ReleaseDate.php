@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\ValueObjects;
-
-use DateTimeImmutable;
-
 /**
  * Value Object que representa la fecha de estreno de una película.
  *
@@ -12,6 +8,11 @@ use DateTimeImmutable;
  *
  * Esta clase es inmutable: una vez creada, su valor no puede cambiar.
  */
+
+namespace App\Domain\Catalog\ValueObjects;
+
+use DateTimeImmutable;
+
 class ReleaseDate
 {
 

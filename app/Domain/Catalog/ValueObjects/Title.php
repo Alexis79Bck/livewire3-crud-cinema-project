@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\ValueObjects;
-
-use App\Domain\Catalog\Exceptions\InvalidMovieTitle;
-
 /**
  * Value Object que representa el título de una película.
  *
@@ -15,6 +11,11 @@ use App\Domain\Catalog\Exceptions\InvalidMovieTitle;
  *
  * @see InvalidMovieTitle Excepción lanzada cuando el título es inválido
  */
+
+namespace App\Domain\Catalog\ValueObjects;
+
+use App\Domain\Catalog\Exceptions\InvalidMovieTitle;
+
 final class Title
 {
     private const MAX_LENGTH = 255;

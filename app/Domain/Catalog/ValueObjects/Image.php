@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\ValueObjects;
-
-use App\Domain\Catalog\Exceptions\InvalidMovieImage;
-
 /**
  * Value Object que representa la imagen (póster) de una película.
  *
@@ -14,6 +10,10 @@ use App\Domain\Catalog\Exceptions\InvalidMovieImage;
  *
  * @see InvalidMovieImage Excepción lanzada cuando la URL es inválida
  */
+
+namespace App\Domain\Catalog\ValueObjects;
+
+use App\Domain\Catalog\Exceptions\InvalidMovieImage;
 final class Image
 {
 

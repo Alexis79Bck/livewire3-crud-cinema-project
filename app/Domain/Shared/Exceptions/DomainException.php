@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Shared\Exceptions;
-
-use Exception;
-
 /**
  * Clase base abstracta para todas las excepciones del dominio.
  *
@@ -21,5 +17,10 @@ use Exception;
  *
  * @extends Exception Clase base de excepciones de PHP
  */
+
+namespace App\Domain\Shared\Exceptions;
+
+use Exception;
+
 abstract class DomainException extends Exception
 {}

@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\ValueObjects;
-
-use App\Domain\Catalog\Exceptions\InvalidMovieRating;
-
 /**
  * Value Object que representa la clasificación de edad de una película.
  *
@@ -15,6 +11,11 @@ use App\Domain\Catalog\Exceptions\InvalidMovieRating;
  *
  * @see InvalidMovieRating Excepción lanzada cuando la clasificación no es válida
  */
+
+namespace App\Domain\Catalog\ValueObjects;
+
+use App\Domain\Catalog\Exceptions\InvalidMovieRating;
+
 final class Rating
 {
     private const ALLOWED = [

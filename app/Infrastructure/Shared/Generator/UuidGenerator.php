@@ -1,10 +1,5 @@
 <?php
 
-namespace App\Infrastructure\Shared\Generator;
-
-use Illuminate\Support\Str;
-use App\Domain\Shared\Generator\IdGenerator;
-
 /**
  * Implementación concreta del generador de identificadores únicos utilizando UUID.
  *
@@ -20,6 +15,12 @@ use App\Domain\Shared\Generator\IdGenerator;
  *
  * @see IdGenerator Interfaz que implementa esta clase
  */
+
+namespace App\Infrastructure\Shared\Generator;
+
+use Illuminate\Support\Str;
+use App\Domain\Shared\Generator\IdGenerator;
+
 final class UuidGenerator implements IdGenerator
 {
     public function generate(): string

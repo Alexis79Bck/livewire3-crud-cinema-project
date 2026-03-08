@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\ValueObjects;
-
-use App\Domain\Catalog\Exceptions\InvalidMovieId;
-
 /**
  * Value Object que representa el identificador único de una película.
  *
@@ -14,6 +10,11 @@ use App\Domain\Catalog\Exceptions\InvalidMovieId;
  *
  * @see InvalidMovieId Excepción lanzada cuando el ID está vacío
  */
+
+namespace App\Domain\Catalog\ValueObjects;
+
+use App\Domain\Catalog\Exceptions\InvalidMovieId;
+
 final class MovieId
 {
 

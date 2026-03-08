@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Domain\Shared\Generator;
-
 /**
  * Interfaz para el generador de identificadores únicos.
  *
@@ -22,6 +20,9 @@ namespace App\Domain\Shared\Generator;
  *
  * @see \App\Infrastructure\Shared\Generator\UuidGenerator Implementación concreta con UUID
  */
+
+namespace App\Domain\Shared\Generator;
+
 interface IdGenerator
 {
     public function generate(): string;

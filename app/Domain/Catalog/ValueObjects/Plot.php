@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\ValueObjects;
-
-use App\Domain\Catalog\Exceptions\InvalidMoviePlot;
-
 /**
  * Value Object que representa la sinopsis o trama de una película.
  *
@@ -15,6 +11,11 @@ use App\Domain\Catalog\Exceptions\InvalidMoviePlot;
  *
  * @see InvalidMoviePlot Excepción lanzada cuando la trama es inválida
  */
+
+namespace App\Domain\Catalog\ValueObjects;
+
+use App\Domain\Catalog\Exceptions\InvalidMoviePlot;
+
 final class Plot
 {
     private const MAX_LENGTH = 500;

@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\Exceptions;
-
-use App\Domain\Shared\Exceptions\DomainException;
-
 /**
  * Excepción específica del dominio que se lanza cuando la sinopsis de una película es inválida.
  *
@@ -13,6 +9,11 @@ use App\Domain\Shared\Exceptions\DomainException;
  * @see \App\Domain\Catalog\ValueObjects\Plot
  * @see \App\Domain\Shared\Exceptions\DomainException Clase base de excepciones del dominio
  */
+
+namespace App\Domain\Catalog\Exceptions;
+
+use App\Domain\Shared\Exceptions\DomainException;
+
 final class InvalidMoviePlot extends DomainException
 {
     public static function empty(): self

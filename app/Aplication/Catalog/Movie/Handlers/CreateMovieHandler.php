@@ -1,18 +1,5 @@
 <?php
 
-namespace App\Aplication\Catalog\Movie\Handlers;
-
-use App\Aplication\Catalog\Movie\Commands\CreateMovieCommand;
-use App\Domain\Catalog\Aggregates\Movie\Movie;
-use App\Domain\Catalog\Repositories\MovieRepository;
-use App\Domain\Catalog\ValueObjects\MovieId;
-use App\Domain\Catalog\ValueObjects\Image;
-use App\Domain\Catalog\ValueObjects\Plot;
-use App\Domain\Catalog\ValueObjects\Rating;
-use App\Domain\Catalog\ValueObjects\ReleaseDate;
-use App\Domain\Catalog\ValueObjects\Title;
-use App\Domain\Shared\Generator\IdGenerator;
-
 /**
  * Handler (Manejador) para el comando CreateMovieCommand.
  *
@@ -33,6 +20,21 @@ use App\Domain\Shared\Generator\IdGenerator;
  * @see IdGenerator Interfaz para generar identificadores únicos
  * @see Movie Aggregate Root de la película
  */
+
+
+namespace App\Aplication\Catalog\Movie\Handlers;
+
+use App\Aplication\Catalog\Movie\Commands\CreateMovieCommand;
+use App\Domain\Catalog\Aggregates\Movie\Movie;
+use App\Domain\Catalog\Repositories\MovieRepository;
+use App\Domain\Catalog\ValueObjects\MovieId;
+use App\Domain\Catalog\ValueObjects\Image;
+use App\Domain\Catalog\ValueObjects\Plot;
+use App\Domain\Catalog\ValueObjects\Rating;
+use App\Domain\Catalog\ValueObjects\ReleaseDate;
+use App\Domain\Catalog\ValueObjects\Title;
+use App\Domain\Shared\Generator\IdGenerator;
+
 class CreateMovieHandler
 {
     public function __construct(

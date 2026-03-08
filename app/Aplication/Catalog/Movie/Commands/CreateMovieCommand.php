@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Aplication\Catalog\Movie\Commands;
-
-use DateTimeImmutable;
-
 /**
  * Command (Comando) para crear una nueva película en el sistema.
  *
@@ -24,6 +20,12 @@ use DateTimeImmutable;
  *
  * @see CreateMovieHandler Handler que procesa este comando
  */
+
+namespace App\Aplication\Catalog\Movie\Commands;
+
+use DateTimeImmutable;
+
+
 class CreateMovieCommand
 {
     public function __construct(

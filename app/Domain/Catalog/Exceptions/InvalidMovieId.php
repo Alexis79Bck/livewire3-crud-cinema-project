@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\Exceptions;
-
-use App\Domain\Shared\Exceptions\DomainException;
-
 /**
  * Excepción específica del dominio que se lanza cuando el identificador de una película es inválido.
  *
@@ -13,6 +9,11 @@ use App\Domain\Shared\Exceptions\DomainException;
  * @see \App\Domain\Catalog\ValueObjects\MovieId
  * @see \App\Domain\Shared\Exceptions\DomainException Clase base de excepciones del dominio
  */
+
+namespace App\Domain\Catalog\Exceptions;
+
+use App\Domain\Shared\Exceptions\DomainException;
+
 class InvalidMovieId extends DomainException
 {
     public static function empty(): self

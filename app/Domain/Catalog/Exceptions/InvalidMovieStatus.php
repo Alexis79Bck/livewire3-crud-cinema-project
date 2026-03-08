@@ -1,9 +1,5 @@
 <?php
 
-namespace App\Domain\Catalog\Exceptions;
-
-use App\Domain\Shared\Exceptions\DomainException;
-
 /**
  * Excepción específica del dominio que se lanza cuando el estado de una película es inválido para una operación.
  *
@@ -15,6 +11,12 @@ use App\Domain\Shared\Exceptions\DomainException;
  * @see \App\Domain\Catalog\Enums\MovieStatus
  * @see \App\Domain\Shared\Exceptions\DomainException Clase base de excepciones del dominio
  */
+
+namespace App\Domain\Catalog\Exceptions;
+
+use App\Domain\Shared\Exceptions\DomainException;
+
+
 class InvalidMovieStatus extends DomainException
 {
     public static function published(): self
