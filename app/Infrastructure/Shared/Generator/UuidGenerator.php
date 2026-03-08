@@ -7,7 +7,7 @@
  * de UUID de Laravel (Str::uuid) para generar identificadores únicos y universalmente
  * únicos según el estándar RFC 4122.
  *
- * Esta implementación es suitable para entornos de producción donde se requieren
+ * Esta implementación es apropiada para entornos de producción donde se requieren
  * identificadores que:
  * - Sean únicos a nivel global
  * - No expongan información secuencial
