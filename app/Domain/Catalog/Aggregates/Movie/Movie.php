@@ -46,15 +46,7 @@ final class Movie
         private Rating $rating,
         private Image $image,
         private MovieStatus $status
-    ) {
-        $this->id = $id;
-        $this->title = $title;
-        $this->plot = $plot;
-        $this->releaseDate = $releaseDate;
-        $this->rating = $rating;
-        $this->image = $image;
-        $this->status = $status;
-    }
+    ) {}
 
     public static function create(
         MovieId $id,
@@ -72,6 +64,26 @@ final class Movie
             $rating,
             $image,
             MovieStatus::DRAFT
+        );
+    }
+
+    public static function reconstitute(
+        MovieId $id,
+        Title $title,
+        Plot $plot,
+        ReleaseDate $releaseDate,
+        Rating $rating,
+        Image $image,
+        MovieStatus $status
+    ): self {
+        return new self(
+            $id,
+            $title,
+            $plot,
+            $releaseDate,
+            $rating,
+            $image,
+            $status
         );
     }
 
@@ -94,23 +106,33 @@ final class Movie
         return $this->id;
     }
 
-    public static function reconstitute(
-        MovieId $id,
-        Title $title,
-        Plot $plot,
-        ReleaseDate $releaseDate,
-        Rating $rating,
-        Image $image,
-        MovieStatus $status
-    ): self {
-        return new self(
-            $id,
-            $title,
-            $plot,
-            $releaseDate,
-            $rating,
-            $image,
-            $status
-        );
+    public function title(): Title
+    {
+        return $this->title;
+    }
+
+    public function plot(): Plot
+    {
+        return $this->plot;
+    }
+
+    public function releaseDate(): ReleaseDate
+    {
+        return $this->releaseDate;
+    }
+
+    public function rating(): Rating
+    {
+        return $this->rating;
+    }
+
+    public function image(): Image
+    {
+        return $this->image;
+    }
+
+    public function status(): MovieStatus
+    {
+        return $this->status;
     }
 }
