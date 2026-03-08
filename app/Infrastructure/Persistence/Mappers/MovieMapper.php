@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Mapper para convertir entre objetos de dominio Movie y modelos Eloquent.
+ *
+ * Esta clase proporciona métodos estáticos para transformar objetos de dominio
+ * Movie (capa de dominio) a modelos Eloquent MovieModel (capa de infraestructura)
+ * y viceversa. Maneja la traducción de datos entre las dos capas manteniendo
+ * la separación limpia del dominio.
+ *
+ * El patrón Mapper es parte de la arquitectura de infraestructura y permite
+ * que el dominio permanezca libre de dependencias de frameworks externos.
+ * Utiliza los Value Objects del dominio para crear instancias de Movie.
+ *
+ * @see Movie Modelo de dominio
+ * @see MovieModel Modelo Eloquent
+ */
+
 namespace App\Infrastructure\Persistence\Mappers;
 
 use App\Domain\Catalog\Aggregates\Movie\Movie;
