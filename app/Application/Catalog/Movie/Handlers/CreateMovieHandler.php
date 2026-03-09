@@ -22,9 +22,9 @@
  */
 
 
-namespace App\Aplication\Catalog\Movie\Handlers;
+namespace App\Application\Catalog\Movie\Handlers;
 
-use App\Aplication\Catalog\Movie\Commands\CreateMovieCommand;
+use App\Application\Catalog\Movie\Commands\CreateMovieCommand;
 use App\Domain\Catalog\Aggregates\Movie\Movie;
 use App\Domain\Catalog\Repositories\MovieRepository;
 use App\Domain\Catalog\ValueObjects\MovieId;

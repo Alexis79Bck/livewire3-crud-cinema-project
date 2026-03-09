@@ -26,13 +26,13 @@ use App\Infrastructure\Persistence\Mappers\MovieMapper;
 
 class EloquentMovieRepository implements MovieRepository
 {
-    public function save(Movie $movie): void
+    public function save(MovieNotFoundException $movie): void
     {
         $model = MovieMapper::toEloquent($movie);
         $model->save();
     }
 
-    public function findById(MovieId $id): ?Movie
+    public function findById(MovieId $id): ?MovieNotFoundException
     {
         $model = MovieModel::find($id->value());
 
@@ -43,7 +43,7 @@ class EloquentMovieRepository implements MovieRepository
         return MovieMapper::toDomain($model);
     }
 
-    public function delete(Movie $movie): void
+    public function delete(MovieNotFoundException $movie): void
     {
         MovieModel::where('id', $movie->id()->value())->delete();
     }
@@ -60,7 +60,7 @@ class EloquentMovieRepository implements MovieRepository
             ->toArray();
     }
 
-    public function archive(Movie $movie): void
+    public function archive(MovieNotFoundException $movie): void
     {
         MovieModel::where('id', $movie->id()->value())
             ->update(['status' => MovieStatus::ARCHIVED->value]);

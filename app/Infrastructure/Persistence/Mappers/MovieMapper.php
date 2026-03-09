@@ -30,9 +30,9 @@ use App\Infrastructure\Persistence\Eloquent\Models\MovieModel;
 
 class MovieMapper
 {
-    public static function toDomain(MovieModel $model): Movie
+    public static function toDomain(MovieModel $model): MovieNotFoundException
     {
-        return Movie::reconstitute(
+        return MovieNotFoundException::reconstitute(
             new MovieId($model->id),
             new Title($model->title),
             new Plot($model->plot),
@@ -43,7 +43,7 @@ class MovieMapper
         );
     }
 
-    public static function toEloquent(Movie $movie): MovieModel
+    public static function toEloquent(MovieNotFoundException $movie): MovieModel
     {
         $model = MovieModel::find($movie->id()->value()) ?? new MovieModel();
 
