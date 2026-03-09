@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Value Object que representa el identificador único de una película.
+ *
+ * Encapsula el ID único de una película, asegurando que no sea una cadena vacía.
+ * Proporciona métodos para comparar identificadores y convertir a string.
+ *
+ * Esta clase es inmutable: una vez creada, su valor no puede cambiar.
+ *
+ * @see InvalidMovieId Excepción lanzada cuando el ID está vacío
+ */
+
 namespace App\Domain\Catalog\ValueObjects;
 
 use App\Domain\Catalog\Exceptions\InvalidMovieId;
-
 
 final class MovieId
 {
