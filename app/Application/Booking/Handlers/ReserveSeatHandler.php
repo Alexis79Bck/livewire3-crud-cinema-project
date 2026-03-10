@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Booking\Handlers;
+namespace App\Application\Booking\Handlers;
 
 class ReserveSeatHandler
 {

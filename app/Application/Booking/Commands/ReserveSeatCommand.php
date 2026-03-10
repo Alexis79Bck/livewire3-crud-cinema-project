@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Booking\Commands;
+namespace App\Application\Booking\Commands;
 
 class ReserveSeatCommand
 {

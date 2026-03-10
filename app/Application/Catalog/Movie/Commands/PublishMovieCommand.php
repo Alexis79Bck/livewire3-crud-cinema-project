@@ -7,7 +7,7 @@
  * de DRAFT a PUBLISHED.
  */
 
-namespace App\Aplication\Catalog\Movie\Commands;
+namespace App\Application\Catalog\Movie\Commands;
 
 class PublishMovieCommand
 {
