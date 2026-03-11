@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Policies;
+namespace App\Domain\Booking\Policies;
 
 class ReservationPolicy
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Aggregates\Showtime;
+namespace App\Domain\Scheduling\Aggregates\Showtime;
 
 class ShowtimeId
 {

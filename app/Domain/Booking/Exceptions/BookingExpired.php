@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Exceptions;
+namespace App\Domain\Booking\Exceptions;
 
 class BookingExpired
 {

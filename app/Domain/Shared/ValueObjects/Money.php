@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\ValueObjects;
+namespace App\Domain\Shared\ValueObjects;
 
 class Money
 {

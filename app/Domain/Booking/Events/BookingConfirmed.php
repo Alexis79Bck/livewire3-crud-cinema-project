@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Events;
+namespace App\Domain\Booking\Events;
 
 class BookingConfirmed
 {

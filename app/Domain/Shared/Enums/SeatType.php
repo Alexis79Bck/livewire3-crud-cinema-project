@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Cinema\Enums;
+namespace App\Domain\Shared\Enums;
 
 class SeatType
 {
