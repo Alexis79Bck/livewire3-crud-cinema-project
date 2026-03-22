@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Booking\Queries;
+namespace App\Application\Booking\Queries;
 
 class GetBookingDetailsQuery
 {

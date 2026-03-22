@@ -16,14 +16,14 @@
  * Este handler implementa el patron Mediator/Handler de CQRS, aislando
  * la logica de aplicacion de las reglas de dominio.
  *
- * @see \App\Aplication\Catalog\Movie\Commands\ArchiveMovieCommand Comando que trigger esta accion
+ * @see \App\Application\Catalog\Movie\Commands\ArchiveMovieCommand Comando que trigger esta accion
  * @see \App\Domain\Catalog\Repositories\MovieRepository Interfaz para persistir la pelicula
  * @see \App\Domain\Catalog\Aggregates\Movie\Movie Aggregate Root de la pelicula
  */
 
-namespace App\Aplication\Catalog\Movie\Handlers;
+namespace App\Application\Catalog\Movie\Handlers;
 
-use App\Aplication\Catalog\Movie\Commands\ArchiveMovieCommand;
+use App\Application\Catalog\Movie\Commands\ArchiveMovieCommand;
 use App\Application\Catalog\Movie\Exceptions\MovieNotFoundException;
 use App\Domain\Catalog\Repositories\MovieRepository;
 use App\Domain\Catalog\ValueObjects\MovieId;

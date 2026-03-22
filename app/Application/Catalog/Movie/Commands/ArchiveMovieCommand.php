@@ -17,7 +17,7 @@
  * @see ArchiveMovieHandler Handler que procesa este comando
  */
 
-namespace App\Aplication\Catalog\Movie\Commands;
+namespace App\Application\Catalog\Movie\Commands;
 
 class ArchiveMovieCommand
 {

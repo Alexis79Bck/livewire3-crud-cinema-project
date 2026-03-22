@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Aplication\Booking\DTOs;
+namespace App\Application\Booking\DTOs;
 
 class SeatSelectionData
 {

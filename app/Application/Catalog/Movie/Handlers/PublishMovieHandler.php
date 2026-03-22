@@ -18,14 +18,14 @@
  * cambia el estado de la pelicula de DRAFT a PUBLISHED, haciendola
  * visible en el catalogo pubblico.
  *
- * @see \App\Aplication\Catalog\Movie\Commands\PublishMovieCommand Comando que trigger esta accion
+ * @see \App\Application\Catalog\Movie\Commands\PublishMovieCommand Comando que trigger esta accion
  * @see \App\Domain\Catalog\Repositories\MovieRepository Interfaz para persistir la pelicula
  * @see \App\Domain\Catalog\Aggregates\Movie\Movie Aggregate Root de la pelicula
  */
 
-namespace App\Aplication\Catalog\Movie\Handlers;
+namespace App\Application\Catalog\Movie\Handlers;
 
-use App\Aplication\Catalog\Movie\Commands\PublishMovieCommand;
+use App\Application\Catalog\Movie\Commands\PublishMovieCommand;
 use App\Application\Catalog\Movie\Exceptions\MovieNotFoundException;
 use App\Domain\Catalog\Repositories\MovieRepository;
 use App\Domain\Catalog\ValueObjects\MovieId;
