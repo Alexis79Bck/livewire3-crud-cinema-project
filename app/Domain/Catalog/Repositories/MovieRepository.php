@@ -3,6 +3,7 @@
 namespace App\Domain\Catalog\Repositories;
 
 use App\Domain\Catalog\Aggregates\Movie\Movie;
+use App\Domain\Catalog\Enums\MovieStatus;
 use App\Domain\Catalog\ValueObjects\MovieId;
 
 /**
@@ -35,5 +36,18 @@ interface MovieRepository
     /** @return Movie[] */
     public function listByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): array;
 
-    
+    /**
+     * Retorna todas las películas del catálogo.
+     *
+     * @return Movie[] Array de películas
+     */
+    public function findAll(): array;
+
+    /**
+     * Retorna todas las películas con un estado específico.
+     *
+     * @param MovieStatus $status Estado de las películas a buscar
+     * @return Movie[] Array de películas con el estado especificado
+     */
+    public function findByStatus(MovieStatus $status): array;
 }

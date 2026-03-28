@@ -27,6 +27,9 @@
 namespace App\Domain\Catalog\Aggregates\Movie;
 
 use App\Domain\Catalog\Enums\MovieStatus;
+use App\Domain\Catalog\Events\MovieCreated;
+use App\Domain\Catalog\Events\MoviePublished;
+use App\Domain\Catalog\Events\MovieArchived;
 use App\Domain\Catalog\Exceptions\InvalidMovieStatus;
 use App\Domain\Catalog\ValueObjects\Image;
 use App\Domain\Catalog\ValueObjects\MovieId;
@@ -34,10 +37,16 @@ use App\Domain\Catalog\ValueObjects\Title;
 use App\Domain\Catalog\ValueObjects\Plot;
 use App\Domain\Catalog\ValueObjects\ReleaseDate;
 use App\Domain\Catalog\ValueObjects\Rating;
+use App\Domain\Shared\Events\DomainEvent;
 
 
 final class Movie
 {
+    /**
+     * @var DomainEvent[]
+     */
+    private array $events = [];
+
     private function __construct(
         private MovieId $id,
         private Title $title,
@@ -56,7 +65,7 @@ final class Movie
         Rating $rating,
         Image $image
     ): self {
-        return new self(
+        $movie = new self(
             $id,
             $title,
             $plot,
@@ -65,6 +74,14 @@ final class Movie
             $image,
             MovieStatus::DRAFT
         );
+
+        $movie->recordEvent(new MovieCreated(
+            $id,
+            $title,
+            MovieStatus::DRAFT
+        ));
+
+        return $movie;
     }
 
     public static function reconstitute(
@@ -93,12 +110,32 @@ final class Movie
             throw InvalidMovieStatus::published();
         }
 
+        if ($this->status === MovieStatus::ARCHIVED) {
+            throw InvalidMovieStatus::archived();
+        }
+
+        $previousStatus = $this->status;
         $this->status = MovieStatus::PUBLISHED;
+
+        $this->recordEvent(new MoviePublished(
+            $this->id,
+            $this->title,
+            $previousStatus,
+            $this->status
+        ));
     }
 
     public function archive(): void
     {
+        $previousStatus = $this->status;
         $this->status = MovieStatus::ARCHIVED;
+
+        $this->recordEvent(new MovieArchived(
+            $this->id,
+            $this->title,
+            $previousStatus,
+            $this->status
+        ));
     }
 
     public function id(): MovieId
@@ -134,5 +171,69 @@ final class Movie
     public function status(): MovieStatus
     {
         return $this->status;
+    }
+
+    /**
+     * Verifica si la película puede transicionar a un nuevo estado.
+     *
+     * @param MovieStatus $newStatus Estado al que se quiere transicionar
+     * @return bool True si la transición es válida, false en caso contrario
+     */
+    public function canTransitionTo(MovieStatus $newStatus): bool
+    {
+        // No se puede transicionar al mismo estado
+        if ($this->status === $newStatus) {
+            return false;
+        }
+
+        // Una película archivada no puede cambiar de estado
+        if ($this->status === MovieStatus::ARCHIVED) {
+            return false;
+        }
+
+        // Una película publicada solo puede archivarse
+        if ($this->status === MovieStatus::PUBLISHED && $newStatus !== MovieStatus::ARCHIVED) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Registra un evento de dominio para ser publicado posteriormente.
+     */
+    protected function recordEvent(DomainEvent $event): void
+    {
+        $this->events[] = $event;
+    }
+
+    /**
+     * Retorna todos los eventos registrados y los limpia.
+     *
+     * @return DomainEvent[]
+     */
+    public function releaseEvents(): array
+    {
+        $events = $this->events;
+        $this->events = [];
+        return $events;
+    }
+
+    /**
+     * Retorna todos los eventos registrados sin limpiarlos.
+     *
+     * @return DomainEvent[]
+     */
+    public function getEvents(): array
+    {
+        return $this->events;
+    }
+
+    /**
+     * Limpia todos los eventos registrados.
+     */
+    public function clearEvents(): void
+    {
+        $this->events = [];
     }
 }
