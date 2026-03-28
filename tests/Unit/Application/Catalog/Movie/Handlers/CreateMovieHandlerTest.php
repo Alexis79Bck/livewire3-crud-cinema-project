@@ -41,7 +41,7 @@ class CreateMovieHandlerTest extends TestCase
         $command = new CreateMovieCommand(
             title: 'The Matrix',
             plot: 'A computer hacker learns about the true nature of reality',
-            releaseDate: new \DateTime('1999-03-31'),
+            releaseDate: new \DateTimeImmutable('1999-03-31'),
             rating: 'R',
             image: 'https://example.com/matrix.jpg'
         );
@@ -68,7 +68,7 @@ class CreateMovieHandlerTest extends TestCase
         $command = new CreateMovieCommand(
             title: 'The Matrix',
             plot: 'A computer hacker learns about the true nature of reality',
-            releaseDate: new \DateTime('1999-03-31'),
+            releaseDate: new \DateTimeImmutable('1999-03-31'),
             rating: 'R',
             image: 'https://example.com/matrix.jpg'
         );
@@ -101,7 +101,7 @@ class CreateMovieHandlerTest extends TestCase
         $command1 = new CreateMovieCommand(
             title: 'The Matrix',
             plot: 'A computer hacker learns about the true nature of reality',
-            releaseDate: new \DateTime('1999-03-31'),
+            releaseDate: new \DateTimeImmutable('1999-03-31'),
             rating: 'R',
             image: 'https://example.com/matrix.jpg'
         );
@@ -109,7 +109,7 @@ class CreateMovieHandlerTest extends TestCase
         $command2 = new CreateMovieCommand(
             title: 'Inception',
             plot: 'A thief who steals corporate secrets through dream-sharing technology',
-            releaseDate: new \DateTime('2010-07-16'),
+            releaseDate: new \DateTimeImmutable('2010-07-16'),
             rating: 'PG-13',
             image: 'https://example.com/inception.jpg'
         );
