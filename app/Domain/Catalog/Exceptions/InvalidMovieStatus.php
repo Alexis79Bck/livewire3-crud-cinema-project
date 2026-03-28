@@ -23,4 +23,9 @@ class InvalidMovieStatus extends DomainException
     {
         return new self('Movie already published.');
     }
+
+    public static function archived(): self
+    {
+        return new self('Cannot publish an archived movie.');
+    }
 }

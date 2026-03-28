@@ -65,4 +65,28 @@ class EloquentMovieRepository implements MovieRepository
         MovieModel::where('id', $movie->id()->value())
             ->update(['status' => MovieStatus::ARCHIVED->value]);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAll(): array
+    {
+        $models = MovieModel::all();
+
+        return $models
+            ->map(fn (MovieModel $model) => MovieMapper::toDomain($model))
+            ->toArray();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByStatus(MovieStatus $status): array
+    {
+        $models = MovieModel::where('status', $status->value)->get();
+
+        return $models
+            ->map(fn (MovieModel $model) => MovieMapper::toDomain($model))
+            ->toArray();
+    }
 }
