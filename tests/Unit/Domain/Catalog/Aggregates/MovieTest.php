@@ -25,7 +25,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -43,7 +43,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -60,7 +60,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -77,7 +77,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -99,7 +99,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -117,7 +117,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -133,7 +133,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -150,7 +150,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -170,7 +170,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -192,7 +192,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -216,7 +216,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
@@ -240,7 +240,7 @@ class MovieTest extends TestCase
             new MovieId('550e8400-e29b-41d4-a716-446655440000'),
             new Title('The Matrix'),
             new Plot('A computer hacker learns about the true nature of reality'),
-            new ReleaseDate(new \DateTime('1999-03-31')),
+            new ReleaseDate(new \DateTimeImmutable('1999-03-31')),
             new Rating('R'),
             new Image('https://example.com/matrix.jpg')
         );
