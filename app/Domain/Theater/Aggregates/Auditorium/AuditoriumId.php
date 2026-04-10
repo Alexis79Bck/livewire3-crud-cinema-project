@@ -11,7 +11,8 @@
 
 namespace App\Domain\Theater\Aggregates\Auditorium;
 
-use App\Domain\Shared\Exceptions\DomainException;
+
+use App\Domain\Theater\Exceptions\InvalidAuditoriumId;
 use Ramsey\Uuid\Uuid;
 
 final class AuditoriumId
@@ -21,7 +22,7 @@ final class AuditoriumId
     private function __construct(string $value)
     {
         if (!Uuid::isValid($value)) {
-            throw new DomainException('Invalid auditorium ID format');
+            throw InvalidAuditoriumId::formatInvalid();
         }
 
         $this->value = $value;
