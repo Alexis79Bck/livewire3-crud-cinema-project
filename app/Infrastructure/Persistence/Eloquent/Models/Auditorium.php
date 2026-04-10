@@ -11,12 +11,41 @@
  * @property string $id Identificador único del auditorium
  * @property string $name Nombre del auditorium (ej: Sala 1, Sala Premium)
  * @property int $capacity Capacidad total de asientos
+ * @property string $location Ubicación del auditorium
  * @property string $status Estado actual del auditorium (activo, mantenimiento, etc.)
  */
 
 namespace App\Infrastructure\Persistence\Eloquent\Models;
 
-class Auditorium
-{
+use Illuminate\Database\Eloquent\Model;
 
+class Auditorium extends Model
+{
+    protected $table = 'auditoriums';
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    public $timestamps = true;
+
+    protected $fillable = [
+        'id',
+        'name',
+        'capacity',
+        'location',
+        'status'
+    ];
+
+    protected $casts = [
+        'status' => 'string',
+        'capacity' => 'integer'
+    ];
+
+    public function seats()
+    {
+        return $this->hasMany(Seat::class);
+    }
 }

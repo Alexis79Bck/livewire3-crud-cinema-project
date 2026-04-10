@@ -37,6 +37,18 @@ final class SeatNumber
         return preg_match('/^[A-Z]\-\d+$/', $value) === 1;
     }
 
+    public function row(): string
+    {
+        $parts = explode('-', $this->value);
+        return $parts[0] ?? 'A';
+    }
+
+    public function number(): int
+    {
+        $parts = explode('-', $this->value);
+        return isset($parts[1]) ? (int)$parts[1] : 1;
+    }
+
     public function toString(): string
     {
         return $this->value;

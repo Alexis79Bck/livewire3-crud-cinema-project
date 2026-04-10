@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Value Object que representa el identificador único de un auditorio.
+ * Value Object que representa el identificador único de un auditorium.
  *
- * Este objeto valor garantiza que los identificadores de auditorio sean UUIDs válidos
+ * Este objeto valor garantiza que los identificadores de auditorium sean UUIDs válidos
  * y proporciona métodos para su manipulación segura.
  *
  * El identificador es inmutable una vez creado.
@@ -36,6 +36,16 @@ final class AuditoriumId
     public static function generate(): self
     {
         return new self(Uuid::uuid4()->toString());
+    }
+
+    public static function fromString(string $value): self
+    {
+        return new self($value);
+    }
+
+    public function value(): string
+    {
+        return $this->value;
     }
 
     public function toString(): string
