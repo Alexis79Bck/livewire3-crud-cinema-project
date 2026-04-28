@@ -13,6 +13,7 @@
  *
  * Servicios registrados:
  * - MovieRepository: Implementación Eloquent para el repositorio de películas
+ * - AuditoriumRepository: Implementación Eloquent para el repositorio de auditoriums
  *
  * @see \Illuminate\Support\ServiceProvider Clase base de Laravel
  */
@@ -20,7 +21,9 @@
 namespace App\Infrastructure\Providers;
 
 use App\Domain\Catalog\Repositories\MovieRepository;
+use App\Domain\Theater\Repositories\AuditoriumRepository;
 use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentMovieRepository;
+use App\Infrastructure\Persistence\Eloquent\Repositories\EloquentAuditoriumRepository;
 use Illuminate\Support\ServiceProvider;
 
 class InfrastructureServiceProvider extends ServiceProvider
@@ -33,6 +36,11 @@ class InfrastructureServiceProvider extends ServiceProvider
         $this->app->bind(
             MovieRepository::class,
             EloquentMovieRepository::class
+        );
+        
+        $this->app->bind(
+            AuditoriumRepository::class,
+            EloquentAuditoriumRepository::class
         );
     }
 

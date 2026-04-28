@@ -18,7 +18,36 @@
 
 namespace App\Infrastructure\Persistence\Eloquent\Models;
 
-class Seat
-{
+use Illuminate\Database\Eloquent\Model;
 
+class Seat extends Model
+{
+    protected $table = 'seats';
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    public $timestamps = true;
+
+    protected $fillable = [
+        'id',
+        'auditorium_id',
+        'row',
+        'seat_number',
+        'type',
+        'is_available'
+    ];
+
+    protected $casts = [
+        'is_available' => 'boolean',
+        'seat_number' => 'integer'
+    ];
+
+    public function auditorium()
+    {
+        return $this->belongsTo(Auditorium::class);
+    }
 }
