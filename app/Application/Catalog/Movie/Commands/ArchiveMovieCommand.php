@@ -14,7 +14,6 @@
  * Este comando es inmutable y se utiliza junto con el ArchiveMovieHandler
  * para procesar el archivado de peliculas.
  *
- * @see ArchiveMovieHandler Handler que procesa este comando
  */
 
 namespace App\Application\Catalog\Movie\Commands;
