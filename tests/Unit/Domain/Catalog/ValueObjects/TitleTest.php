@@ -65,8 +65,8 @@ class TitleTest extends TestCase
         $title2 = new Title('The Matrix');
         $title3 = new Title('Inception');
 
-        $this->assertTrue($title1->equals($title2));
-        $this->assertFalse($title1->equals($title3));
+        $this->assertTrue($title1->value() === $title2->value());
+        $this->assertFalse($title1->value() === $title3->value());
     }
 
     /** @test */
@@ -74,6 +74,6 @@ class TitleTest extends TestCase
     {
         $title = new Title('The Matrix');
 
-        $this->assertEquals('The Matrix', (string) $title);
+        $this->assertEquals('The Matrix', $title->value());
     }
 }
