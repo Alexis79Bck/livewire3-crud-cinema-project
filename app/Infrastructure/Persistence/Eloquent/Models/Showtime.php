@@ -1,25 +1,65 @@
 <?php
 
-/**
- * Modelo Eloquent representando una Función (Showtime) en la base de datos.
- *
- * Esta clase mapea la tabla 'showtimes' y contiene la estructura de datos
- * necesaria para representar una función de cine dentro del sistema de persistencia.
- * Una función representa una proyección específica de una película en un
- * auditorium determinado, con horario definido.
- *
- * @property string $id Identificador único de la función
- * @property string $movie_id Identificador de la película que se exhibe
- * @property string $auditorium_id Identificador del auditorium donde se exhibe
- * @property \Carbon\Carbon $start_time Hora de inicio de la función
- * @property \Carbon\Carbon $end_time Hora de fin de la función
- * @property string $status Estado de la función (disponible, completa, cancelada, etc.)
- * @property float $base_price Precio base de las entradas
- */
-
 namespace App\Infrastructure\Persistence\Eloquent\Models;
 
-class Showtime
-{
+use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Modelo Eloquent representando una Función (Showtime) en la base de datos.
+ */
+class Showtime extends Model
+{
+    protected $table = 'showtimes';
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    public $timestamps = true;
+
+    protected $fillable = [
+        'id',
+        'movie_id',
+        'auditorium_id',
+        'start_time',
+        'end_time',
+        'base_price',
+        'is_active',
+    ];
+
+    protected $casts = [
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+        'base_price' => 'decimal:2',
+        'is_active' => 'boolean',
+    ];
+
+    public function movie()
+    {
+        return $this->belongsTo(MovieModel::class, 'movie_id', 'id');
+    }
+
+    public function auditorium()
+    {
+        return $this->belongsTo(Auditorium::class, 'auditorium_id', 'id');
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'showtime_id', 'id');
+    }
+
+    public function tickets()
+    {
+        return $this->hasManyThrough(
+            Ticket::class,
+            Booking::class,
+            'showtime_id',
+            'booking_id',
+            'id',
+            'id'
+        );
+    }
 }

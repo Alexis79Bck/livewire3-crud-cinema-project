@@ -1,25 +1,53 @@
 <?php
 
-/**
- * Modelo Eloquent representando un Ticket (Entrada) en la base de datos.
- *
- * Esta clase mapea la tabla 'tickets' y contiene la estructura de datos
- * necesaria para representar una entrada de cine dentro del sistema de persistencia.
- * Un ticket representa la compra efectiva de un asiento específico para una
- * función determinada, incluyendo los detalles del pago.
- *
- * @property string $id Identificador único del ticket
- * @property string $booking_id Identificador de la reserva asociada
- * @property string $showtime_id Identificador de la función
- * @property string $seat_id Identificador del asiento reservado
- * @property float $price Precio del ticket
- * @property string $status Estado del ticket (vendido, usado, cancelado, etc.)
- * @property \Carbon\Carbon $purchase_date Fecha de compra del ticket
- */
-
 namespace App\Infrastructure\Persistence\Eloquent\Models;
 
-class Ticket
-{
+use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Modelo Eloquent representando un Ticket (Entrada) en la base de datos.
+ */
+class Ticket extends Model
+{
+    protected $table = 'tickets';
+
+    protected $primaryKey = 'id';
+
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
+    public $timestamps = true;
+
+    protected $fillable = [
+        'id',
+        'booking_id',
+        'seat_id',
+        'showtime_id',
+        'ticket_status',
+        'price',
+        'currency',
+        'qr_code',
+        'checksum',
+    ];
+
+    protected $casts = [
+        'price' => 'decimal:2',
+        'ticket_status' => 'string',
+    ];
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class, 'booking_id', 'id');
+    }
+
+    public function seat()
+    {
+        return $this->belongsTo(Seat::class, 'seat_id', 'id');
+    }
+
+    public function showtime()
+    {
+        return $this->belongsTo(Showtime::class, 'showtime_id', 'id');
+    }
 }
